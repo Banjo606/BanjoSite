@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static admin_black %}
+<html lang="zh-hant">
+
+<head>
+	{% include '539/includes/head.html' %}
+	{% block extrahead %}{% endblock extrahead %}
+	{% block extrastyle %}{% endblock extrastyle %}
+</head>
+
+<body class="{% block bodyclass %}{% endblock bodyclass %}">
+	{% include '539/includes/scripts.html' %}
+	<div class="wrapper">
+		{% block sidebar %}
+			{% include '539/includes/sidebar.html' %}
+		{% endblock sidebar %}
+		<div class="main-panel">
+			{% block navigation %}
+                {% comment %} {% include '539/includes/navigation.html' %} {% endcomment %}
+			{% endblock navigation %}
+			{% block content %}
+            {% endblock content %}
+			{% block footer %}
+                {% comment %} {% include '539/includes/footer.html' %} {% endcomment %}
+			{% endblock footer %}
+		</div>
+	</div>
+	{% block fixed-plugin %}
+        {% comment %} {% include '539/includes/fixed-plugin.html' %} {% endcomment %}
+	{% endblock fixed-plugin %}
+	{% block extrajs %}
+    {% endblock extrajs %}
+</body>
+
+</html>

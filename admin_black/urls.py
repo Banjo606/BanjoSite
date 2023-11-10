@@ -2,11 +2,10 @@ from django.contrib import admin
 from django.urls import path
 from admin_black import views
 from django.contrib.auth import views as auth_views
-from Lottery_539 import views as views_539
 
 urlpatterns = [
     #  path('', views.dashboard, name='dashboard'),
-     path('', views_539.index, name='home'),
+     path('', views.home, name='home'),
      path('icons/', views.icons, name='icons'),
      path('map/', views.map, name='map'),
      path('notifications/', views.notifications, name='notifications'),

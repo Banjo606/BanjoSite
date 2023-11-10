@@ -4,6 +4,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
+def home(request):
+    return redirect('/539/')
+
 def auth_signup(request):
   if request.method == 'POST':
       form = RegistrationForm(request.POST)

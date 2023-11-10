@@ -1,0 +1,65 @@
+{% load static admin_black %}
+<ul class="nav">
+	<!-- ==============================  首  頁  ============================== -->
+	<li class="{% if 'dashboard' in segment %} active {% endif %}">
+		<a href="/539">
+			<i class="tim-icons icon-chart-pie-36"></i>
+			<p>首頁</p>
+		</a>
+	</li>
+	<!-- ==============================未  登  入============================== -->
+	{% if not request.user.is_authenticated %}
+		<li class="{% if 'pages' in parent %}active{% endif %}">
+			<a href="{% url 'auth_signin' %}">
+				<i class="tim-icons icon-lock-circle"></i>
+				<p>登入</p>
+			</a>
+		</li>
+	{% endif %}
+	<!-- ============================== 最高權限 ============================== -->
+	{% admin_get_menu as app_list %}
+	{% if app_list %}
+		{% for app in app_list %}
+			{% if app.has_perms and not app.pinned %}
+				<li class="">
+					<a data-toggle="collapse" href="#dashboards{{app.app_label}}" aria-expanded="false">
+						<i class="tim-icons {% if app.icon %} {{ app.icon }} {% else %} icon-lock-circle{% endif %}"></i>
+						<p>
+							{{ app.label|slice:15 }}{% if app.label|length > 15 %}..{% endif %}
+							<b class="caret"></b>
+						</p>
+					</a>
+					{% if app.models %}
+					<div
+						class="collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}"
+						id="dashboards{{app.app_label}}">
+						<ul class="nav">
+							{% for model in app.models %}
+							{% if model.url %}
+							<li class="{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
+								<a href="{{ model.url }}">
+									<span class="sidebar-mini-icon">{{ model.label|first }}</span>
+									<span class="sidebar-normal">{{ model.label }}</span>
+								</a>
+							</li>
+							{% else %}
+							<li class="">{{ model.label }}</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+				</li>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	<!-- ==============================一般使用者============================== -->
+	{% if request.user.is_authenticated and not request.user.is_superuser %}
+	<li>
+		<a href="{% url 'logout' %}">
+			<i class="tim-icons icon-button-power"></i>
+			<p>登出</p>
+		</a>
+	</li>
+	{% endif %}
+</ul>
