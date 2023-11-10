@@ -3,6 +3,7 @@ from django.http.response import HttpResponse
 from . models import history
 from . api.home.statistic import StatisticCalcProb
 from . api.home.bigsmall import BigSmallCalcProb
+from . api.home.oddseven import OddsEvenCalcProb
 
 # Create your views here.
 def index(request):
@@ -21,3 +22,7 @@ def get_home_statistic(request):
 def get_home_bigsmall(request):
     context = BigSmallCalcProb(history)
     return render(request, '539/api/home/BigSmall.html', context)
+
+def get_home_oddseven(request):
+    context = OddsEvenCalcProb(history)
+    return render(request, '539/api/home/OddsEven.html', context)
