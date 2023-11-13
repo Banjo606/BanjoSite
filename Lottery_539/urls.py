@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index, name = "Index"),
 
     path('api/home/statistic/', views.get_home_statistic, name="api-statistic"),
+    path('api/home/bigsmall/', views.get_home_bigsmall, name="api-bigsmall"),
 ]

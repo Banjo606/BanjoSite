@@ -93,6 +93,80 @@
 		</div>
 	</div>
 	<!-- ==============================第  二  層==============================-->
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="card card-chart">
+				<div class="card-header ">
+					<div class="row">
+						<div class="col-sm-6 text-left">
+							<h5 class="card-category">尾數大小</h5>
+							<h2 class="card-title"><div id="BigSmallRange"></div></h2>
+						</div>
+						<div class="col-sm-6">
+							<div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+								{% if request.user.is_authenticated and not request.user.is_superuser %}
+								<label class="btn btn-sm btn-primary btn-simple" id="17">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近一年</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								<label class="btn btn-sm btn-primary btn-simple" id="16">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近半年</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								<label class="btn btn-sm btn-primary btn-simple" id="15">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近90天</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								<label class="btn btn-sm btn-primary btn-simple" id="14">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上個月</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								<label class="btn btn-sm btn-primary btn-simple" id="13">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近30天</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								{% endif %}
+								<label class="btn btn-sm btn-primary btn-simple" id="12">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上禮拜</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+								<label class="btn btn-sm btn-primary btn-simple" id="11">
+									<input type="radio" class="d-none d-sm-none" name="options">
+									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近７日</span>
+									<span class="d-block d-sm-none">
+										<i class="tim-icons icon-chart-bar-32"></i>
+									</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="chart-area">
+						<canvas id="chartBigSmall"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- ==============================第  三  層==============================-->
 	<div class="row">
 		<div class="col-lg-4">

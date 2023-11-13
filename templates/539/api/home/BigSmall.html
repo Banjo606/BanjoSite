@@ -1,0 +1,1 @@
+{ "label": [ "0, 1, 2, 3, 4", "5, 6, 7, 8, 9" ], "n7": {{ n7 }}, "w1": {{ w1 }}, "n30": {{ n30 }}, "m1": {{ m1 }}, "n90": {{ n90 }}, "n180": {{ n180 }}, "y0": {{ y0 }}, "daterange": { {% for k, v in daterange.items %}{% if forloop.counter0 != 0 %},{% endif %} "{{k}}": "{{v}}" {% endfor %} } }
