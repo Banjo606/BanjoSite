@@ -4,6 +4,7 @@ from . models import history
 from . api.home.statistic import StatisticCalcProb
 from . api.home.bigsmall import BigSmallCalcProb
 from . api.home.oddseven import OddsEvenCalcProb
+from . api.home.tail import TailCalcProb
 
 # Create your views here.
 def index(request):
@@ -26,3 +27,7 @@ def get_home_bigsmall(request):
 def get_home_oddseven(request):
     context = OddsEvenCalcProb(history)
     return render(request, '539/api/home/OddsEven.html', context)
+
+def get_home_tail(request):
+    context = TailCalcProb(history)
+    return render(request, '539/api/home/Tail.html', context)
