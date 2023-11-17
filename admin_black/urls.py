@@ -15,7 +15,7 @@ urlpatterns = [
      path('rtl/', views.rtl, name='rtl'),
      path('upgrade/', views.upgrade, name='upgrade'),
 
-     path('accounts/auth-signup/', views.auth_signup, name = 'auth_signup'),
+    #  path('accounts/auth-signup/', views.auth_signup, name = 'auth_signup'),
      path('accounts/auth-signin/', views.AuthSignin.as_view(), name='auth_signin'),
      path('accounts/forgot-password/', views.UserPasswordResetView.as_view(), name='forgot_password'),
 

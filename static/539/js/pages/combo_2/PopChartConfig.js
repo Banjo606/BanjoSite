@@ -41,7 +41,8 @@ function Init() {
 				ticks: {
 					padding: 20,
 					fontColor: "#9e9e9e"
-				}
+				},
+				position: 'top',
 			}]
 		},
 		indexAxis: 'y',
