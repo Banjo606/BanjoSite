@@ -38,11 +38,11 @@ pop.changeData = function(dataSource, dateRange) {
 
 	var nMax = Math.max(...dataSource, 1);
 	var nMin = Math.min(...dataSource);
-	pop.Chart.options.scales.xAxes[0].ticks.stepSize = (nMax >= 10 ? 0 : 1);
+	pop.Chart.options.scales.x.ticks.stepSize = (nMax >= 10 ? 0 : 1);
 	// var nUpper = Math.floor(nMax * 1.05 / 5 + 0.9999) * 5;
-	pop.Chart.options.scales.xAxes[0].ticks.max = (nMax <= 20 ? nMax : nMax);
+	pop.Chart.options.scales.x.ticks.max = (nMax <= 20 ? nMax : nMax);
 	var nLower = Math.floor(nMin * 0.9);
-	pop.Chart.options.scales.xAxes[0].ticks.suggestedMin = (nMin == 0 ? 0 : nLower);
+	pop.Chart.options.scales.x.ticks.suggestedMin = (nMin == 0 ? 0 : nLower);
 	
 	pop.Chart.update();
 

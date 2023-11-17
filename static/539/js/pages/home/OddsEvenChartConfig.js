@@ -4,8 +4,10 @@ function Init() {
 	var data = oddseven_config;
 	data.options = {
 		maintainAspectRatio: false,
-		legend: {
-			display: false
+		plugins: {
+			legend: {
+				display: false
+			},
 		},
 		tooltips: {
 			backgroundColor: '#f5f5f5',
@@ -19,7 +21,7 @@ function Init() {
 		},
 		responsive: true,
 		scales: {
-			yAxes: [{
+			y: {
 				gridLines: {
 					drawBorder: false,
 					color: 'rgba(29,140,248,0.1)',
@@ -29,9 +31,9 @@ function Init() {
 					padding: 20,
 					fontColor: "#9e9e9e",
 				}
-			}],
+			},
 	
-			xAxes: [{
+			x: {
 				gridLines: {
 					drawBorder: false,
 					color: 'rgba(29,140,248,0.1)',
@@ -41,7 +43,7 @@ function Init() {
 					padding: 20,
 					fontColor: "#9e9e9e"
 				}
-			}]
+			}
 		}
 	};
 	

@@ -4,9 +4,11 @@ function Init() {
 	var data = pop_config;
 	data.options = {
 		maintainAspectRatio: false,
-		legend: {
-			display: false,
-			position: 'left',
+		plugins: {
+			legend: {
+				display: false,
+				position: 'left',
+			},
 		},
 		tooltips: {
 			backgroundColor: '#f5f5f5',
@@ -20,7 +22,7 @@ function Init() {
 		},
 		responsive: true,
 		scales: {
-			yAxes: [{
+			y: {
 				gridLines: {
 					drawBorder: false,
 					color: 'rgba(29,140,248,0.1)',
@@ -30,9 +32,9 @@ function Init() {
 					padding: 20,
 					fontColor: "#9e9e9e",
 				}
-			}],
+			},
 	
-			xAxes: [{
+			x: {
 				gridLines: {
 					drawBorder: false,
 					color: 'rgba(29,140,248,0.1)',
@@ -43,7 +45,7 @@ function Init() {
 					fontColor: "#9e9e9e"
 				},
 				position: 'top',
-			}]
+			}
 		},
 		indexAxis: 'y',
 	};
@@ -56,7 +58,7 @@ function Init() {
 	gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
 	data.config = {
-		type: 'horizontalBar',
+		type: 'bar',
 		responsive: true,
 		legend: {
 			display: false
