@@ -7,15 +7,6 @@
 			<p>首頁</p>
 		</a>
 	</li>
-	<!-- ==============================未  登  入============================== -->
-	{% if not request.user.is_authenticated %}
-		<li class="{% if 'pages' in parent %}active{% endif %}">
-			<a href="{% url 'auth_signin' %}">
-				<i class="tim-icons icon-lock-circle"></i>
-				<p>登入</p>
-			</a>
-		</li>
-	{% endif %}
 	<!-- ============================== 最高權限 ============================== -->
 	{% admin_get_menu as app_list %}
 	{% if app_list %}
@@ -55,11 +46,26 @@
 	{% endif %}
 	<!-- ==============================一般使用者============================== -->
 	{% if request.user.is_authenticated and not request.user.is_superuser %}
-	<li>
-		<a href="{% url 'logout' %}">
-			<i class="tim-icons icon-button-power"></i>
-			<p>登出</p>
-		</a>
-	</li>
+		<li class="{% if 'combo_2' in segment %} active {% endif %}">
+			<a href="{% url 'combo_2' %}">
+				<i class="tim-icons icon-link-72"></i>
+				<p>兩兩一組</p>
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'logout' %}">
+				<i class="tim-icons icon-button-power"></i>
+				<p>登出</p>
+			</a>
+		</li>
+	{% endif %}
+	<!-- ==============================未  登  入============================== -->
+	{% if not request.user.is_authenticated %}
+		<li class="{% if 'pages' in parent %}active{% endif %}">
+			<a href="{% url 'auth_signin' %}">
+				<i class="tim-icons icon-lock-circle"></i>
+				<p>登入</p>
+			</a>
+		</li>
 	{% endif %}
 </ul>
