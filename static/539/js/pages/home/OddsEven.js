@@ -1,3 +1,4 @@
+var oddseven_chart = "chartOddsEven";
 var oddseven = {};
 
 oddseven.changeData = function(dataSource, dateRange) {
@@ -5,15 +6,7 @@ oddseven.changeData = function(dataSource, dateRange) {
 	data.datasets[0].data = dataSource;
 	data.labels = oddseven.labels;
 
-	var nMax = Math.max(...dataSource, 1);
-	var nMin = Math.min(...dataSource);
-	oddseven.Chart.options.scales.y.ticks.stepSize = (nMax >= 10 ? 0 : 1);
-	// var nUpper = Math.floor(nMax * 1.05 / 5 + 0.9999) * 5;
-	oddseven.Chart.options.scales.y.ticks.max = (nMax <= 20 ? nMax : nMax);
-	var nLower = Math.floor(nMin * 0.9);
-	nLower = (nMax - nLower < 10 ? (nMax > 10 ? nMax - 10 : 0) : nLower);
-	oddseven.Chart.options.scales.y.ticks.suggestedMin = (nMin == 0 ? 0 : nLower);
-	
+	HomeChartCommon.ModifyYAxesRange(oddseven.Chart, dataSource);
 	oddseven.Chart.update();
 
 	document.getElementById("OddsEvenRange").innerHTML = dateRange;
@@ -30,8 +23,12 @@ oddseven.registerClick = function() {
 };
 
 function Init() {
-	var Cfg = oddseven_config;
-	oddseven.Chart = new Chart(Cfg.ctx, Cfg.config);
+	oddseven.Chart = new Chart(HomeChartCommon.GetContext(oddseven_chart), {
+		type: 'bar',
+		data: HomeChartCommon.GenerateDataModels(oddseven_chart),
+		plugins: [ChartDataLabels],
+		options: HomeChartCommon.GetOptions(),
+	});
 	oddseven.registerClick();
 
 	$.get("./api/home/oddseven/", function(msg) {

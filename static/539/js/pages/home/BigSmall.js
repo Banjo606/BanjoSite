@@ -1,3 +1,4 @@
+var bigsmall_chart = "chartBigSmall";
 var bigsmall = {};
 
 bigsmall.changeData = function(dataSource, dateRange) {
@@ -5,15 +6,7 @@ bigsmall.changeData = function(dataSource, dateRange) {
 	data.datasets[0].data = dataSource;
 	data.labels = bigsmall.labels;
 
-	var nMax = Math.max(...dataSource, 1);
-	var nMin = Math.min(...dataSource);
-	bigsmall.Chart.options.scales.y.ticks.stepSize = (nMax >= 10 ? 0 : 1);
-	// var nUpper = Math.floor(nMax * 1.05 / 5 + 0.9999) * 5;
-	bigsmall.Chart.options.scales.y.ticks.max = (nMax <= 20 ? nMax : nMax);
-	var nLower = Math.floor(nMin * 0.9);
-	nLower = (nMax - nLower < 10 ? (nMax > 10 ? nMax - 10 : 0) : nLower);
-	bigsmall.Chart.options.scales.y.ticks.suggestedMin = (nMin == 0 ? 0 : nLower);
-	
+	HomeChartCommon.ModifyYAxesRange(bigsmall.Chart, dataSource);
 	bigsmall.Chart.update();
 
 	document.getElementById("BigSmallRange").innerHTML = dateRange;
@@ -30,8 +23,12 @@ bigsmall.registerClick = function() {
 };
 
 function Init() {
-	var Cfg = bigsmall_config;
-	bigsmall.Chart = new Chart(Cfg.ctx, Cfg.config);
+	bigsmall.Chart = new Chart(HomeChartCommon.GetContext(bigsmall_chart), {
+		type: 'bar',
+		data: HomeChartCommon.GenerateDataModels(bigsmall_chart),
+		plugins: [ChartDataLabels],
+		options: HomeChartCommon.GetOptions(),
+	});
 	bigsmall.registerClick();
 
 	$.get("./api/home/bigsmall/", function(msg) {

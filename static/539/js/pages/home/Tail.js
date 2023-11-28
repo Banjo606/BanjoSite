@@ -1,3 +1,4 @@
+var tail_chart = "chartTail";
 var tail = {};
 
 tail.changeData = function(dataSource, dateRange) {
@@ -5,15 +6,7 @@ tail.changeData = function(dataSource, dateRange) {
 	data.datasets[0].data = dataSource;
 	data.labels = tail.labels;
 
-	var nMax = Math.max(...dataSource, 1);
-	var nMin = Math.min(...dataSource);
-	tail.Chart.options.scales.y.ticks.stepSize = (nMax >= 10 ? 0 : 1);
-	// var nUpper = Math.floor(nMax * 1.05 / 5 + 0.9999) * 5;
-	tail.Chart.options.scales.y.ticks.max = (nMax <= 20 ? nMax : nMax);
-	var nLower = Math.floor(nMin * 0.9);
-	nLower = (nMax - nLower < 10 ? (nMax > 10 ? nMax - 10 : 0) : nLower);
-	tail.Chart.options.scales.y.ticks.suggestedMin = (nMin == 0 ? 0 : nLower);
-	
+	HomeChartCommon.ModifyYAxesRange(tail.Chart, dataSource);
 	tail.Chart.update();
 
 	document.getElementById("TailRange").innerHTML = dateRange;
@@ -32,8 +25,12 @@ tail.registerClick = function() {
 };
 
 function Init() {
-	var Cfg = tail_config;
-	tail.Chart = new Chart(Cfg.ctx, Cfg.config);
+	tail.Chart = new Chart(HomeChartCommon.GetContext(tail_chart), {
+		type: 'bar',
+		data: HomeChartCommon.GenerateDataModels(tail_chart),
+		plugins: [ChartDataLabels],
+		options: HomeChartCommon.GetOptions(),
+	});
 	tail.registerClick();
 
 	$.get("./api/home/tail/", function(msg) {
