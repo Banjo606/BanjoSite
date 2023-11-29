@@ -3,90 +3,88 @@
 {% block content %}
 <div class="content">
 	<!-- ==============================第  一  層==============================-->
-	<div class="row">
-		<div class="col-12">
-			<div class="card card-chart">
-				<div class="card-header ">
-					<div class="row">
-						<div class="col-sm-6 text-left">
-							<h5 class="card-category">兩兩一組</h5>
-							<h2 class="card-title"><div id="PopRange"></div></h2>
-						</div>
-						<div class="col-sm-6">
-							<div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-								{% if request.user.is_authenticated and not request.user.is_superuser %}
-								<label class="btn btn-sm btn-primary btn-simple" id="8">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近一年</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="7">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近半年</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="6">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近90天</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="5">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上個月</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="4">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近30天</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="3">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">這個月</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								{% endif %}
-								<label class="btn btn-sm btn-primary btn-simple" id="2">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上禮拜</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple" id="1">
-									<input type="radio" class="d-none d-sm-none" name="options">
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近７日</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-								<label class="btn btn-sm btn-primary btn-simple active" id="0">
-									<input type="radio" name="options" checked>
-									<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">這禮拜</span>
-									<span class="d-block d-sm-none">
-										<i class="tim-icons icon-chart-bar-32"></i>
-									</span>
-								</label>
-							</div>
+	<div class="col-md-12">
+		<div class="card card-plain">
+			<div class="card-header ">
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<h5 class="card-category">兩兩一組</h5>
+						<h2 class="card-title"><div id="PopRange"></div></h2>
+					</div>
+					<div class="col-sm-6">
+						<div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+							{% if request.user.is_authenticated and not request.user.is_superuser %}
+							<label class="btn btn-sm btn-primary btn-simple" id="8">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近一年</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="7">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近半年</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="6">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近90天</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="5">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上個月</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="4">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近30天</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="3">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">這個月</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							{% endif %}
+							<label class="btn btn-sm btn-primary btn-simple" id="2">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">上禮拜</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple" id="1">
+								<input type="radio" class="d-none d-sm-none" name="options">
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">近７日</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
+							<label class="btn btn-sm btn-primary btn-simple active" id="0">
+								<input type="radio" name="options" checked>
+								<span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">這禮拜</span>
+								<span class="d-block d-sm-none">
+									<i class="tim-icons icon-chart-bar-32"></i>
+								</span>
+							</label>
 						</div>
 					</div>
 				</div>
-				<div class="card-body">
-					<div class="chart-area-3">
-						<canvas id="chartPop"></canvas>
-					</div>
+			</div>
+			<div class="card-body">
+				<div class="chart-area-3">
+					<div id="tablePop" class="table-responsive" style="overflow: hidden;"></div>
 				</div>
 			</div>
 		</div>
@@ -94,6 +92,6 @@
 </div>
 {% endblock content %}
 {% block extrajs %}
-	<script src="{% static '539/js/pages/combo_2/PopChartConfig.js' %}"></script>
+	<script src="{% static '539/js/pages/combo_2/Combo2Common.js' %}"></script>
 	<script src="{% static '539/js/pages/combo_2/Pop.js' %}"></script>
 {% endblock extrajs %}

@@ -14,11 +14,7 @@ def index(request):
 
 @login_required(login_url='/accounts/auth-signin')
 def combo_2(request):
-	context = {
-		'parent': 'pages',
-		'segment': 'combo_2'
-	}
-	return render(request, '539/pages/combo_2.html', context)
+	return render(request, '539/pages/combo_2.html')
 
 
 

@@ -79,8 +79,8 @@ def decorQuery(func):
 		return func(queryData, dict)
 	return wrap
 
-def NumCombo(num1, num2):
-	return "{0:0>2}+{1:0>2}".format(min(num1, num2), max(num1, num2))
+def NumberToIndex(num1, num2):
+	return min(num1, num2) * 100 + max(num1, num2)
 
 @decorQuery
 def myStatistics(queryset, dict):
@@ -89,7 +89,7 @@ def myStatistics(queryset, dict):
 		
 		for n1 in range(0, 4):
 			for n2 in range(n1 + 1, 5):
-				combo = NumCombo(num[n1], num[n2])
+				combo = NumberToIndex(num[n1], num[n2])
 				if (combo not in dict):
 					dict[combo] = 0
 				dict[combo] = dict[combo] + 1
