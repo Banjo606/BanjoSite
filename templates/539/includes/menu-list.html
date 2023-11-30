@@ -4,7 +4,7 @@
 	<li class="{% if 'dashboard' in segment %} active {% endif %}">
 		<a href="/539">
 			<i class="tim-icons icon-chart-pie-36"></i>
-			<p>首頁</p>
+			<p class="menu-name">首頁</p>
 		</a>
 	</li>
 	<!-- ============================== 最高權限 ============================== -->
@@ -15,7 +15,7 @@
 				<li class="">
 					<a data-toggle="collapse" href="#dashboards{{app.app_label}}" aria-expanded="false">
 						<i class="tim-icons {% if app.icon %} {{ app.icon }} {% else %} icon-lock-circle{% endif %}"></i>
-						<p>
+						<p class="menu-name">
 							{{ app.label|slice:15 }}{% if app.label|length > 15 %}..{% endif %}
 							<b class="caret"></b>
 						</p>
@@ -30,7 +30,7 @@
 							<li class="{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
 								<a href="{{ model.url }}">
 									<span class="sidebar-mini-icon">{{ model.label|first }}</span>
-									<span class="sidebar-normal">{{ model.label }}</span>
+									<span class="sidebar-normal menu-name">{{ model.label }}</span>
 								</a>
 							</li>
 							{% else %}
@@ -46,16 +46,28 @@
 	{% endif %}
 	<!-- ==============================一般使用者============================== -->
 	{% if request.user.is_authenticated and not request.user.is_superuser %}
+		<li class="{% if 'single' in segment %} active {% endif %}">
+			<a href='javascript: ShowNotification("top", "center", 1, "「一字千金」目前還尚未完成，敬請期待！")'>
+				<i class="tim-icons icon-compass-05"></i>
+				<p class="menu-name">一字千金</p>
+			</a>
+		</li>
 		<li class="{% if 'combo_2' in segment %} active {% endif %}">
 			<a href="{% url 'combo_2' %}">
 				<i class="tim-icons icon-link-72"></i>
-				<p>兩兩一組</p>
+				<p class="menu-name">兩全其美</p>
+			</a>
+		</li>
+		<li class="{% if 'combo_2' in segment %} active {% endif %}">
+			<a href='javascript: ShowNotification("top", "center", 1, "「三分鼎足」目前還尚未完成，敬請期待！")'>
+				<i class="tim-icons icon-molecule-40"></i>
+				<p class="menu-name">三分鼎足</p>
 			</a>
 		</li>
 		<li>
 			<a href="{% url 'logout' %}">
 				<i class="tim-icons icon-button-power"></i>
-				<p>登出</p>
+				<p class="menu-name">登出</p>
 			</a>
 		</li>
 	{% endif %}
@@ -64,7 +76,7 @@
 		<li class="{% if 'pages' in parent %}active{% endif %}">
 			<a href="{% url 'auth_signin' %}">
 				<i class="tim-icons icon-lock-circle"></i>
-				<p>登入</p>
+				<p class="menu-name">登入</p>
 			</a>
 		</li>
 	{% endif %}

@@ -6,11 +6,16 @@ from . api.home.statistic	import StatisticCalcProb
 from . api.home.bigsmall	import BigSmallCalcProb
 from . api.home.oddseven	import OddsEvenCalcProb
 from . api.home.tail		import TailCalcProb
+from . api.single.beenhide	import BeenHideStatistic
 from . api.combo_2.pop		import PopCalcProb
 
 # Create your views here.
 def index(request):
 	return render(request, '539/pages/home.html')
+
+@login_required(login_url='/accounts/auth-signin')
+def single(request):
+	return render(request, '539/pages/single.html')
 
 @login_required(login_url='/accounts/auth-signin')
 def combo_2(request):
@@ -37,6 +42,11 @@ def get_home_oddseven(request):
 def get_home_tail(request):
 	context = TailCalcProb(history)
 	return render(request, '539/api/home/Tail.html', context)
+
+# ----------  single  ----------
+def get_single_beenhide(request):
+	context = BeenHideStatistic(history)
+	return render(request, '539/api/single/BeenHide.html', context)
 
 # ----------  combo_2 ----------
 def get_combo_2_pop(request):
